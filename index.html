@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>First VR attempt with A-Frame</title>
+
+  <style>
+    html, body, .app { height: 100%; margin: 0; padding: 0; }
+    .app {
+      display: grid;
+      grid-template: "top top top" auto
+                     "left main right" 1fr
+                     "bottom bottom bottom" auto / auto 1fr auto;
+    }
+
+    .top-area { grid-area: top; background-color: #fad;}
+    .left-area { grid-area: left; background-color: #daf; }
+    .main-area { grid-area: main; background-color: #a94;}
+    .right-area { grid-area: right; background-color: #afd; }
+    .bottom-area { grid-area: bottom; background-color: #dfa;}
+  </style>
+
+  <script src="./aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>  
+</head>
+
+<body>
+  <div class="app">
+    <div class="top-area">Top area</div>
+    <div class="left-area">Left area</div>
+    <div class="main-area">
+      <a-scene embedded>
+        <a-assets>
+          <a-asset-item id="demo-obj" src="demo.obj"></a-asset-item>
+          <a-asset-item id="demo-mtl" src="demo.mtl"></a-asset-item>
+        </a-assets>
+    
+        <a-entity obj-model="obj: #demo-obj; mtl: #demo-mtl" position="0 -30 -30"></a-entity>
+    
+        <!-- <a-plane id="target" position="0 1 -5" scale="0.5 0.5 0.5" color="red"
+          animation="property: position; to: 2 1 -5; dur: 2000; loop: true; dir: alternate"></a-plane>
+    
+        <a-entity laser="rayOrigin: camera; far: 10" line="color: white; opacity: 0.75" visible="false"></a-entity> -->
+    
+        <!-- <a-entity camera look-controls wasd-controls></a-entity> -->
+
+        <a-entity movement-controls="fly: true">
+          <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
+      </a-entity>        
+      </a-scene>
+    </div>
+    <div class="right-area">Right area</div>
+    <div class="bottom-area">Bottom area</div>
+  </div>
+
+  <script>
+    // document.querySelector('a-scene').addEventListener('keydown', (evt) => {
+    //   if (evt.code === 'space') {
+    //     document.querySelector('a-entity[laser]').setAttribute('visible', true);
+    //   }
+    // });
+    // document.querySelector('a-scene').addEventListener('keyup', (evt) => {
+    //   if (evt.code === 'space') {
+    //     document.querySelector('a-entity[laser]').setAttribute('visible', false);
+    //   }
+    // });
+  </script>
+</body>
+
+</html>

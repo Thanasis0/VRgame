@@ -1,0 +1,25 @@
+newmtl Color_Green
+Kd 0.3843136 0.6745098 0.4666665
+newmtl 174F3B19AA433527D77FFBFC6F7EB1F183FDD2A9
+Kd 0.1882353 0.2352941 0.2392157
+newmtl 9B5F61178FEA44AD5CEC43EF559BE8C9905E0590
+Kd 1 0.941176 0.878431
+newmtl 2DBCB730049EF778FAFFE59FA437264928095C89
+Kd 0.188235 0.235294 0.239216
+newmtl Color_White
+Kd 0.9433962 0.9433962 0.9433962
+newmtl Arch_ConcreteRough_01
+Kd 1 1 1
+map_Kd Arch_concrete_rough_01.png
+newmtl Arch_RoofShingles_01
+Kd 1 1 1
+map_Kd Arch_roof_shingles_01.png
+newmtl Arch_Glass_Blue_01
+Kd 0.5145069 0.6872256 0.7735849
+d 0.8313726
+newmtl Arch_Wood_01
+Kd 0.9191176 0.9191176 0.9191176
+map_Kd Arch_wood_01.png
+newmtl Arch_WoodOak_01
+Kd 1 1 1
+map_Kd Arch_wood_oak_01.png

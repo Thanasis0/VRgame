@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Use A-frame -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+<script>
+  AFRAME.registerComponent("test", {
+    schema: { default: '' },
+    init: function() {
+      console.log("*************************")
+    }
+  })
+</script>
+    
+    <!-- Adds environments -->
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    
+    <!-- Adds support for Oculus/Meta thumbstick controls for movement -->
+    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-thumbstick-controls.js"></script>
+	
+	<style>
+	  html, body { height: 100%; margin: 0; padding: 0 }
+	</style>
+  </head>
+  
+  <body> 
+    <div style="height: 100%; display:flex; flex-direction: column">
+	
+		<h1 style="flex: 0 0 auto">Thanasis</h1>
+		
+		<a-scene embedded style="flex: 1 1 0" shadow="type: pcfsoft;">
+		  <a-image test></a-image>
+		  <!-- Environment -->
+		  <a-entity environment="preset: checkerboard; fog: 0.8; dressingColor: purple; dressing: towers; dressingAmount: 500; shadow: true; lightPosition: 0 5 -5"></a-entity>
+		  
+		   <a-entity shadow="cast:true; receive:true"> <!-- Adds shadows for objects inside -->
+			 
+		   <a-entity scale="1 .7 1"> <!-- Squash the pumpkin vertically -->  
+			 
+			<!-- Pumpkin -->
+			<a-sphere position="0 1.65 -6" radius=".25" color="#e67d0e" rotation="0 -90 0" material="src:url(https://cdn.glitch.global/0101fe68-5959-45fc-9a56-1d6fd83c549a/Pumpkin skin.jpg?v=1662919388121)"></a-sphere>   
+			
+			<!-- Stalk -->
+			<a-cylinder color="green" height=".2" radius=".02" position="0 1.9 -6" rotation="0 0 -25"></a-cylinder>
+		  
+		  </a-entity>
+		  
+		  <!-- Table top -->
+		  <a-box color="saddlebrown" depth="1" height=".05" width="1" position="0 1 -6"></a-box>
+		  
+		  <!-- Table legs -->
+		  <a-box color="saddlebrown" depth="0.1" height="1" width="0.1" position="-0.45 0.5 -5.55"></a-box>
+		  <a-box color="saddlebrown" depth="0.1" height="1" width="0.1" position="0.45 0.5 -5.55"></a-box>
+		  <a-box color="saddlebrown" depth="0.1" height="1" width="0.1" position="-0.45 0.5 -6.45"></a-box>
+		  <a-box color="saddlebrown" depth="0.1" height="1" width="0.1" position="0.45 0.5 -6.45"></a-box>
+		  <a-box color="saddlebrown" material="opacity: 0.5; transparent: true;" depth="0.1" height="0.5" width="0.1" position="0.45 0.5 -6.45" opacity="1"></a-box>
+			 
+		  </a-entity>
+		  
+		
+		  <!-- Controls for Meta quest and similar headsets -->
+		  <a-entity id="rig">
+			<a-camera position="0 1.6 0"></a-camera>
+			<a-entity oculus-touch-controls="hand: left" ></a-entity>
+			<a-entity oculus-touch-controls="hand: right" oculus-thumbstick-controls></a-entity>
+		  </a-entity>
+
+		</a-scene>	
+	</div>
+
+    <script>
+		window.addEventListener("load", function(){
+			console.log("tbo loaded")
+			AFRAME.registerComponent('zoom', {
+			  init: function () {
+				console.log("tbo registerComponent")
+				var camera = this.el;
+				var canvas = this.el.sceneEl.canvas;
+				canvas.addEventListener('wheel', function (evt) {
+				  console.log("tbo", evt)
+				  camera.position.z += evt.deltaY * 0.01;
+				});
+			  }
+			})
+		});	
+	</script>
+  </body> 
+</html>
